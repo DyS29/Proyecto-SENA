@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const port = 3000
-app.use(express.urlencoded({extended:true}))
+app.use(express.urlencoded({ extended: true }))
 
 const mysql = require('mysql2/promise');
 
@@ -13,21 +13,21 @@ const connection = mysql.createPool({
 });
 
 app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
-}) 
+  console.log(`Example app listening on port ${port}`)
+})
 
-app.post('/',async (req, res) => {
+app.post('/', async (req, res) => {
   console.log(req.body)
   try {
     const [results, fields] = await connection.query(
       "SELECT * FROM `usuarios` WHERE `n_celular` = ? AND `contraseña` = ?;"
-      ,[req.body.celular,req.body.contraseña]
+      , [req.body.celular, req.body.contraseña]
     );
-    if (results.length>0) {
-       res.redirect("http://127.0.0.1:3001/principal.html")
+    if (results.length > 0) {
+      res.redirect("http://127.0.0.1:3001/principal.html")
     } else {
       res.redirect("http://127.0.0.1:3001/error.html")
-      
+
     }
     console.log(results); // results contains rows returned by server
     console.log(fields); // fields contains extra meta data about results, if available
@@ -35,4 +35,25 @@ app.post('/',async (req, res) => {
     console.log(err);
   }
 })
- 
+
+app.post("/registro", async function name(req, res) {
+  try {
+    const [results, fields] = await connection.query(
+      "INSERT INTO `usuarios` (`id`, `n_celular`, `contraseña`) VALUES (NULL, ? , ? );"
+      , [req.body.celular, req.body.contraseña]
+    );
+    console.log(results)
+    if (results.affectedRows > 0) {
+      res.redirect("http://localhost:5173/")
+    } else {
+      res.redirect("http://127.0.0.1:3001/error.html")
+
+    }
+    console.log(results); // results contains rows returned by server
+    console.log(fields); // fields contains extra meta data about results, if available
+  }
+  catch (err) {
+    console.log(err);
+    res.redirect("http://127.0.0.1:3001/error.html")
+  }
+})

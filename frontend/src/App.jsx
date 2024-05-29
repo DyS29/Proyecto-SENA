@@ -16,8 +16,14 @@ function App() {
           <button>Ingresar</button>
         </form>
         {/* olvido su contraseña */}
-        <div>
 
+        <h1>Registro</h1>
+        <div>
+          <form action="http://localhost:3000/registro" method="post">
+            <input type="number" name="celular" id="" placeholder="N. Celular" />
+            <input type="password" name="contraseña" id="" placeholder="Contraseña" />
+            <button>Registro</button>
+          </form>
         </div>
       </main>
     </>
