@@ -43,7 +43,7 @@ app.get("/registro", async function name(req, res) {
   try {
     const [results, fields] = await connection.query(
       "INSERT INTO `usuarios` (`id`, `n_celular`, `contraseña`) VALUES (NULL, ? , ? );"
-      , [req.body.celular, req.body.contraseña]
+      , [req.query.celular, req.query.contraseña]
     );
     console.log(results)
     if (results.affectedRows > 0) {
