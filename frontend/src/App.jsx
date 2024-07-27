@@ -72,7 +72,53 @@ function App() {
   }
 
   if (logueado) {
-    return <Confetti />;
+    //return <Confetti />;
+    return <>
+      <header className='container'>
+        <nav>
+          <ul>
+            <li>Inicio</li>
+            <li>Alabanza</li>
+            <li>Danzas</li>
+            <li>Kids</li>
+            <li>Consolidado</li>
+          </ul>
+        </nav>
+
+        {/*ul lista desordenada  */}
+
+      </header>
+
+      <main className="container">
+        {/* Vista para crear publicacion con imagen o video*/}
+        <form>
+          <input type="text" placeholder="Titulo" />
+          <textarea placeholder="Contenido"></textarea>
+          <input type="file" />
+          <button>Publicar</button>
+        </form>
+        {/* Dos columnas una para publicaciones y otra para el calendario*/}
+        <section>
+          <h2>Publicaciones</h2>
+          <article>
+            <h3>Titulo de la publicación</h3>
+            <p>Contenido de la publicación</p>
+          </article>
+          <article>
+            <h3>Titulo de la publicación</h3>
+            <p>Contenido de la publicación</p>
+          </article>
+          <article>
+            <h3>Titulo de la publicación</h3>
+            <p>Contenido de la publicación</p>
+          </article>
+        </section>
+        <aside>
+          <h2>Calendario</h2>
+          <p>Calendario de eventos</p>
+        </aside>
+      </main>
+    </>
   }
 
   return (

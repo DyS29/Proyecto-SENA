@@ -12,6 +12,7 @@ Dividir terminal para inciar frontend
 1.3 Luego se debe ejecutar el comando:
 - npm run dev
 
+Crear una tabla para publicaciones TAREA
 
 
 
